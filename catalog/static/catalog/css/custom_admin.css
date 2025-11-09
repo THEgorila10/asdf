@@ -1,0 +1,31 @@
+/* catalog/static/catalog/css/custom_admin.css */
+
+/* עיצוב כללי לכפתורים וקישורים שנראים ככפתורים */
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    /* צבע הרקע: ורוד עתיק (Dusty Rose) */
+    background-color: #D4A5A5 !important; 
+    /* צבע הטקסט */
+    color: #333333 !important;              
+    /* מסגרת: זהב */
+    border: 2px solid #D4AF37 !important; 
+    border-radius: 5px !important;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s, border-color 0.3s;
+    font-weight: bold !important;
+}
+
+/* אפקט ריחוף (Hover) */
+.button:hover, input[type=submit]:hover, a.button:hover {
+    background-color: #C09090 !important; /* ורוד מעט כהה יותר */
+    border-color: #FFD700 !important; /* זהב בהיר יותר */
+}
+
+/* ודא שכפתורי 'מחיקה' (Delete) נשארים אדומים כדי למנוע בלבול! */
+.deletelink {
+    background-color: #ba2121 !important;
+    color: white !important;
+    border: 2px solid #8e0000 !important;
+}
+.deletelink:hover {
+    background-color: #991e1e !important;
+}

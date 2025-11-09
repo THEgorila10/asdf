@@ -4,9 +4,10 @@ from .models import Author, Genre, Book, BookInstance, Language
 
 class BooksInstanceInline(admin.TabularInline):
     model = BookInstance
-class BookInline(admin.StackedInline):
+class BookInline(admin.TabularInline):
     model = Book
-    extra = 0
+    extra = 5
+
 
 admin.site.register(Genre)
 
@@ -30,7 +31,8 @@ class BookAdmin(admin.ModelAdmin):
 class BookInstanceAdmin(admin.ModelAdmin):
     list_display = ('book', 'status', 'due_back', 'id' ,'borrower')
     list_filter = ('status', 'due_back' )
-    
+   
+
 
     fieldsets = (
         (None, {
@@ -41,4 +43,5 @@ class BookInstanceAdmin(admin.ModelAdmin):
             'fields': ('status', 'due_back', 'borrower') 
         }),
     )
-
+    
+    

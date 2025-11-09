@@ -53,7 +53,10 @@ class Book(models.Model):
     def get_absolute_url(self):
         """מחזיר את ה-URL כדי לגשת לספר ספציפי."""
         return reverse('book-detail', args=[str(self.id)])
-
+    def get_absolute_url(self):
+     """Returns the url to access a detail record for this book."""
+     # אנחנו משתמשים בשם 'book-detail' שנגדיר עוד רגע ב-urls.py
+     return reverse('book-detail', args=[str(self.id)])
 class BookInstance(models.Model):
     """מודל המייצג עותק ספציפי של ספר (עותק שניתן להשאיל מהספרייה)."""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4,
@@ -105,6 +108,10 @@ class Author(models.Model):
     def __str__(self):
         """מחרוזת לייצוג המודל."""
         return f'{self.last_name}, {self.first_name}'
+def get_absolute_url(self):
+    """Returns the url to access a particular author instance."""
+    # אנחנו משתמשים בשם 'author-detail' שנגדיר עוד רגע ב-urls.py
+    return reverse('author-detail', args=[str(self.id)])    
 class Language(models.Model):
      name = models.CharField(max_length=100, help_text="הזן את שפת הספר (למשל, עברית, אנגלית, פרסית)")
 
