@@ -68,15 +68,19 @@ class BookInstance(models.Model):
     language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
     borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
-    
+   
+
+    @property
+    def is_overdue(self):
+     """Determines if the book is overdue based on due date and current date."""
+     return bool(self.due_back and date.today() > self.due_back)
     # אלו ה-"choices" שדיברנו עליהם.
     LOAN_STATUS = (
         ('m', 'בתחזוקה'), # Maintenance
         ('o', 'מושאל'),  # On loan
         ('a', 'זמין'),    # Available
         ('r', 'שמור'),   # Reserved
-    )
- 
+    ) 
     status = models.CharField(
         max_length=1,
         choices=LOAN_STATUS,
@@ -84,13 +88,15 @@ class BookInstance(models.Model):
         default='m', # ברירת המחדל היא "בתחזוקה"
         help_text='זמינות הספר',
     )
+    
 
-    class Meta:
+class Meta:
         ordering = ['due_back'] # סדר מיון ברירת מחדל: לפי תאריך ההחזרה
-
-    def __str__(self):
+        permissions = (("can_mark_returned", "Set book as returned"),)
+def __str__(self):
         """מחרוזת לייצוג המודל."""
         return f'{self.id} ({self.book.title})'
+  
 class Author(models.Model):
     """מודל המייצג סופר."""
     first_name = models.CharField(max_length=100)
