@@ -9,3 +9,5 @@ db.sqlite3
 # קבצי מטמון (cache) של פייתון
 __pycache__/
 *.pyc
+
+.env

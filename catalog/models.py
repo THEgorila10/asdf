@@ -102,7 +102,7 @@ class Author(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
-    date_of_death = models.DateField('נפטר', null=True, blank=True)
+    date_of_death = models.DateField('Died', null=True, blank=True)
 
     class Meta:
         ordering = ['last_name', 'first_name'] # מיון לפי שם משפחה, ואז שם פרטי
@@ -114,10 +114,7 @@ class Author(models.Model):
     def __str__(self):
         """מחרוזת לייצוג המודל."""
         return f'{self.last_name}, {self.first_name}'
-def get_absolute_url(self):
-    """Returns the url to access a particular author instance."""
-    # אנחנו משתמשים בשם 'author-detail' שנגדיר עוד רגע ב-urls.py
-    return reverse('author-detail', args=[str(self.id)])    
+
 class Language(models.Model):
      name = models.CharField(max_length=100, help_text="הזן את שפת הספר (למשל, עברית, אנגלית, פרסית)")
 
