@@ -24,8 +24,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-g2+_ond$wv%hh3
 # כאן המערכת בודקת: אם כתוב True בקובץ הסודות - מצב פיתוח. אחרת - מצב ייצור (בטוח)
 DEBUG = os.environ.get('DJANGO_DEBUG', '') == 'True'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-
+ALLOWED_HOSTS = ['locally.pythonanywhere.com', '127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
