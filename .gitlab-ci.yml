@@ -1,22 +1,16 @@
-# 1. בחירת הסביבה: אנחנו אומרים לרובוט להשתמש בגרסת פייתון 3.10
 default:
   image: python:3.10
 
-# 2. הגדרת השלבים: כרגע יש לנו רק שלב אחד - בדיקה
 stages:
   - test
 
-# 3. הגדרת המשימה עצמה
 test_job:
   stage: test
-  
-  # אנחנו מגדירים משתני סביבה זמניים רק לצורך הבדיקה
   variables:
     DJANGO_SECRET_KEY: "secret-key-for-testing-only"
     DJANGO_DEBUG: "True"
-
-  # הפקודות שהרובוט יריץ אחת אחרי השנייה
   script:
-    - echo "Starting tests..."
-    - pip install -r requirements.txt  # התקנת הספריות
-    - python manage.py test            # הרצת הבדיקות עצמן
+    - echo "Starting setup..."
+    - pip install -r requirements.txt
+    - echo "Running tests..."
+    - python manage.py test
